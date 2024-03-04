@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background: url([[@{/images/background.jpg}]]) no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+        .table-container {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:first-child, td:first-child {
+            border-left: none;
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors for appointment</title>
+</head>
+<body>
+<div class="table-container">
+    <h1>Doctors for appointment</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Doctor Surname</th>
+            <th>Specializations</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doctor : ${doctorWithSpecializations}">
+            <td th:text="${doctor.name}"></td>
+            <td th:text="${doctor.surname}"></td>
+            <td>
+                <ul>
+                    <li th:each="specialization : ${doctor.specializations}" th:text="${specialization.name}"></li>
+                </ul>
+            </td>
+            <td><a class="btn btn-primary" th:href="@{/patient/makeAppointment/dates(doctorEmail=${doctor.email},patientEmail=${patient.email})}">Make appointment</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

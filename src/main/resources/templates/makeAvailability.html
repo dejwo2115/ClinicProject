@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+  <style>
+        body {
+            background: url([[@{/images/background.jpg}]])
+                no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<head>
+  <meta charset="UTF-8">
+  <title>Add Availability Form</title>
+</head>
+<body>
+<h2>Add Availability</h2>
+<form action="/clinic/doctor/addAvailability" method="post">
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date"><br><br>
+  <label for="startTime">Start Time:</label>
+  <input type="time" id="startTime" name="startTime"><br><br>
+  <label for="amountOfVisits">Amount of Visits:</label>
+  <input type="number" id="amountOfVisits" name="amountOfVisits"><br><br>
+  <input type="hidden" name="doctorEmail" th:value="${doctor.email}"/>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

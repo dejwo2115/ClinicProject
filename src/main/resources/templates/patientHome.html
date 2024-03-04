@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+  <style>
+        body {
+            background: url([[@{/images/background.jpg}]])
+                no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Welcome in patient service:</h1>
+  <div>
+    <a th:href="@{/patient/selectDoctorForAppointment/{patientEmail}(patientEmail=${patient.email})}" class="btn btn-success" role="button">Make an appointment</a>
+    <a th:href="@{/patient/historyAndUpcomingVisitsPage/{patientEmail}(patientEmail=${patient.email})}" class="btn btn-info" role="button">Check your visits history and upcoming appointments</a>
+  </div>
+  <div>
+    <a th:href="@{/}" class="btn btn-primary" role="button">Back to the main page</a>
+  </div>
+</div>
+</body>
+
+</html>

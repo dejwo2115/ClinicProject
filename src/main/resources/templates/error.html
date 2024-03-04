@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #dc3545;
+        }
+
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+  <h1>Something is not yes.</h1>
+  <b><span th:if="${errorMessage}" th:text="${errorMessage}">Error</span></b>
+  <br>
+  <img th:src="@{/images/bestDoctorErrorMessage.jpg}" alt="OOPS" width="auto" height="300px"/>
+  <br>
+  <br>
+  <p>
+    <a th:href="@{/}" class="btn btn-info" role="button">Back to the main page</a>
+  </p>
+</div>
+</body>
+</html>

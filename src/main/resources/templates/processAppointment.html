@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background: url([[@{/images/background.jpg}]])
+                no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Appointment Processing</h1>
+    <form action="processAppointment" method="post" >
+        <div class="mb-3">
+            <label for="appointmentNote" class="form-label">Appointment Note</label>
+            <textarea class="form-control" id="appointmentNote" name="appointmentNote" th:text="${appointmentNote}"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="prescribedMedications" class="form-label">Prescribed Medications</label>
+            <textarea class="form-control" id="prescribedMedications" name="prescribedMedications" th:text="${prescribedMedications}"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="prescriptionNote" class="form-label">Prescription Note</label>
+            <textarea class="form-control" id="prescriptionNote" name="prescriptionNote" th:text="${prescriptionNote}"></textarea>
+        </div>
+        <input type="hidden" id="patientEmail" name="patientEmail" th:value="${patientDTO.email}">
+        <input type="hidden" id="doctorEmail" name="doctorEmail" th:value="${doctorDTO.email}">
+        <input type="hidden" id="appointmentId" name="appointmentId" th:value="${appointmentDTO.appointmentId}">
+        <button type="submit" class="btn btn-primary">Process Appointment</button>
+    </form>
+</div>
+</body>
+</html>

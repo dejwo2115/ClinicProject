@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+  <style>
+        body {
+            background: url([[@{/images/background.jpg}]])
+                no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Select Date</h1>
+<form action="dates/selectTime" method="get">
+  <label for="selectedDate">Select Date:</label>
+  <select name="selectedDate" id="selectedDate">
+    <option th:each="date : ${availableDates}" th:value="${date}">
+      <span th:text="${date}"></span>
+    </option>
+  </select>
+  <button type="submit">Select Time</button>
+  <input type="hidden" name="doctorEmail" th:value="${doctorEmail}"/>
+  <input type="hidden" name="patientEmail" th:value="${patientEmail}"/>
+</form>
+</body>
+</html>
