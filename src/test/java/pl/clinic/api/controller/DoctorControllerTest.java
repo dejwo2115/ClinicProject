@@ -71,7 +71,7 @@ class DoctorControllerTest {
     void showAddAvailabilityForm() {
         // given
         String userName = "testDoctor";
-        Doctor doctor = buildDoctor(); // Assuming Doctor object creation
+        Doctor doctor = buildDoctor();
         when(authentication.getName()).thenReturn(userName);
         when(clinicUserDetailsService.findDoctorByUserName(userName)).thenReturn(doctor);
 
@@ -91,7 +91,7 @@ class DoctorControllerTest {
         LocalTime startTime = LocalTime.now();
         Integer amountOfVisits = 5;
         String doctorEmail = "test@example.com";
-        Doctor doctor = buildDoctor(); // Assuming Doctor object creation
+        Doctor doctor = buildDoctor();
         when(doctorService.findByEmail(doctorEmail)).thenReturn(doctor);
         RedirectAttributes redirectAttributes = mock(RedirectAttributes.class);
         // when

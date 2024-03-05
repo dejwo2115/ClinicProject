@@ -160,19 +160,19 @@ class AppointmentControllerTest {
         Appointment appointment = buildNotProceededAppointment(buildDoctorAvailability()); // przykładowy obiekt Appointment
         when(appointmentService.findById(appointmentId)).thenReturn(appointment);
 
-        AppointmentDTO appointmentDTO = buildNotProceededAppointmentDTO(buildDoctorAvailabilityDTO()); // przykładowy DTO dla Appointment
+        AppointmentDTO appointmentDTO = buildNotProceededAppointmentDTO(buildDoctorAvailabilityDTO());
         when(appointmentMapper.map(appointment)).thenReturn(appointmentDTO);
 
-        Patient patient = buildPatient(); // przykładowy obiekt Patient
+        Patient patient = buildPatient();
         when(patientService.findPatientByEmail(patientEmail)).thenReturn(patient);
 
-        PatientDTO patientDTO = new PatientDTO(); // przykładowy DTO dla Patient
+        PatientDTO patientDTO = new PatientDTO();
         when(patientMapper.map(patient)).thenReturn(patientDTO);
 
-        Doctor doctor = buildDoctor(); // przykładowy obiekt Doctor
+        Doctor doctor = buildDoctor();
         when(doctorService.findByEmail(doctorEmail)).thenReturn(doctor);
 
-        DoctorDTO doctorDTO = new DoctorDTO(); // przykładowy DTO dla Doctor
+        DoctorDTO doctorDTO = new DoctorDTO();
         when(doctorMapper.map(doctor)).thenReturn(doctorDTO);
 
         ExtendedModelMap model = new ExtendedModelMap();

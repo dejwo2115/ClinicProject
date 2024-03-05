@@ -12,9 +12,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfiguration {
 
-//    @Value("${api.cepik.url}")
-//    private String cepikUrl;
-
     @Bean
     public WebClient webClient(ObjectMapper objectMapper) {
         final var strategies = ExchangeStrategies

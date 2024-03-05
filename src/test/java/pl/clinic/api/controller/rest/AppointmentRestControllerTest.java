@@ -47,9 +47,9 @@ class AppointmentRestControllerTest {
     void getAppointmentForPatient() throws Exception {
         // given
         String email = "maciejwolski@gmail.com";
-        Patient patient = buildPatient().withEmail(email); // assuming buildPatient method creates a patient object
-        Appointment appointment = buildNotProceededAppointment(buildDoctorAvailability()); // assuming buildAppointment method creates an appointment object
-        AppointmentDTO appointmentDTO = buildNotProceededAppointmentDTO(buildDoctorAvailabilityDTO()); // assuming buildAppointmentDTO method creates an appointment DTO object
+        Patient patient = buildPatient().withEmail(email);
+        Appointment appointment = buildNotProceededAppointment(buildDoctorAvailability());
+        AppointmentDTO appointmentDTO = buildNotProceededAppointmentDTO(buildDoctorAvailabilityDTO());
         List<Appointment> appointments = List.of(appointment);
         when(patientService.findPatientByEmail(email)).thenReturn(patient);
         when(appointmentService.findByPatientEmailAndIsFinishedFalse(email)).thenReturn(appointments);
