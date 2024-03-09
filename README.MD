@@ -10,7 +10,7 @@ Specializations: Management of medical specializations for doctors.
 History: Doctors can view appointment history and patient information.
 Technologies Used
 Backend: Java, Spring Boot, Spring MVC, Spring Data JPA
-Testing: JUnit, Mockito, RestAssured
+Testing: JUnit, Mockito
 Data Mapping: MapStruct
 Documentation: Swagger
 How to Run the Application
@@ -18,13 +18,9 @@ Clone the repository to your local machine.
 Run the application in your favorite IDE.
 Use Maven or gradle dependency management tool to download all required dependencies.
 Run the application using the command mvn spring-boot:run.
-The application will be accessible at http://localhost:8080.
-How to Test the Application
-To run unit tests, use the command mvn test.
-To run integration tests, make sure the application is running locally, then use the command mvn verify.
-To generate a code coverage report, use the command mvn jacoco:report.
+The application will be accessible at http://localhost:8190.
 API Documentation
-Browse the API documentation by running the application and navigating to http://localhost:8080/swagger-ui.html.
+Browse the API documentation by running the application and navigating to http://localhost:8190/clinic/swagger-ui/index.html#/.
 
 Author
 Dawid Olsztyn
