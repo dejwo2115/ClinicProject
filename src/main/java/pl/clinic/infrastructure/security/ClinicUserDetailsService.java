@@ -15,6 +15,7 @@ import pl.clinic.business.PatientService;
 import pl.clinic.domain.*;
 import pl.clinic.domain.exception.ProcessingException;
 
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

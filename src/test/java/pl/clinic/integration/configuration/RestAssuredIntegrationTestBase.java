@@ -44,7 +44,6 @@ public abstract class RestAssuredIntegrationTestBase
         wireMockServer = new WireMockServer(
             wireMockConfig()
                 .port(9999)
-                .extensions(new ResponseTemplateTransformer(false))
         );
         wireMockServer.start();
     }

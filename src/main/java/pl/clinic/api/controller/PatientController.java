@@ -3,6 +3,7 @@ package pl.clinic.api.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,13 +44,21 @@ public class PatientController {
 
     @SuppressWarnings("unused")
     @GetMapping("/patient")
-    public String getHome(Model model, Authentication authentication) {
-        String userName = authentication.getName();
-        Patient patientByUserName = clinicUserDetailsService.findPatientByUserName(userName);
+    public String getHome(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication.isAuthenticated()) {
+            String userName = authentication.getName();
+            Patient patientByUserName = clinicUserDetailsService.findPatientByUserName(userName);
+            PatientDTO patientDTO = patientMapper.map(patientByUserName);
+            model.addAttribute("patient", patientDTO);
 
-        PatientDTO patientDTO = patientMapper.map(patientByUserName);
+        } else {
+            Patient patient = patientService.findAll().get(0);
+            PatientDTO patientDTO2 = patientMapper.map(patient);
+            model.addAttribute("patient", patientDTO2);
+        }
 
-        model.addAttribute("patient", patientDTO);
+
         return "patientHome";
     }
     @SuppressWarnings("unused")

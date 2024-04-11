@@ -20,7 +20,7 @@ public interface DoctorAvailabilityJpaRepository extends JpaRepository<DoctorAva
             SELECT da.startTime FROM DoctorAvailabilityEntity da
             WHERE da.doctor = :doctor
             AND da.availabilityDate = :date
-            AND da.reserved = 'false'
+            AND da.reserved = false
             """)
     List<LocalTime> findStartTimesByDoctorAndDate(@Param("doctor") DoctorEntity doctor, @Param("date") LocalDate date);
     Optional<DoctorAvailabilityEntity> findByDoctorAndAvailabilityDateAndStartTime(DoctorEntity doctor, LocalDate availabilityDate, LocalTime startTime);

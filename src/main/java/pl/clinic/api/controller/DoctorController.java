@@ -4,6 +4,7 @@ package pl.clinic.api.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,10 +53,18 @@ public class DoctorController {
     @SuppressWarnings("unused")
     @GetMapping("/doctor/makeAvailability")
     public String showAddAvailabilityForm(Model model, Authentication authentication) {
-        String userName = authentication.getName();
-        Doctor doctorByUserName = clinicUserDetailsService.findDoctorByUserName(userName);
-        DoctorDTO doctor = doctorMapper.map(doctorByUserName);
-        model.addAttribute("doctor", doctor);
+        if(!authentication.isAuthenticated()) {
+            Doctor doctor = doctorService.findAll().get(0);
+            DoctorDTO doctorDTO = doctorMapper.map(doctor);
+            model.addAttribute("doctor", doctorDTO);
+
+        } else {
+            String userName = authentication.getName();
+            Doctor byIsLogged = doctorService.findByIsLogged(authentication);
+//            Doctor doctorByUserName = clinicUserDetailsService.findDoctorByUserName(userName);
+            DoctorDTO doctor = doctorMapper.map(byIsLogged);
+            model.addAttribute("doctor", doctor);
+        }
         return "makeAvailability";
     }
     @SuppressWarnings("unused")
