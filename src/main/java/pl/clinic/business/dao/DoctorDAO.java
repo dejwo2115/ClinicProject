@@ -1,6 +1,5 @@
 package pl.clinic.business.dao;
 
-import org.springframework.security.core.Authentication;
 import pl.clinic.domain.Doctor;
 import pl.clinic.domain.Specialization;
 
