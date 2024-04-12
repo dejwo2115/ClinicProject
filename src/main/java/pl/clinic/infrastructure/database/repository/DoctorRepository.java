@@ -1,6 +1,7 @@
 package pl.clinic.infrastructure.database.repository;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Repository;
 import pl.clinic.business.dao.DoctorDAO;
 import pl.clinic.domain.Doctor;
@@ -10,6 +11,7 @@ import pl.clinic.infrastructure.database.entity.SpecializationEntity;
 import pl.clinic.infrastructure.database.repository.jpa.DoctorJpaRepository;
 import pl.clinic.infrastructure.database.repository.jpa.SpecializationJpaRepository;
 import pl.clinic.infrastructure.database.repository.mapper.DoctorEntityMapper;
+import pl.clinic.infrastructure.security.ClinicUserDetailsService;
 
 import java.util.List;
 import java.util.Optional;
@@ -58,4 +60,5 @@ public class DoctorRepository implements DoctorDAO {
         doctorEntity.getSpecializations().add(saved);
         doctorJpaRepository.saveAndFlush(doctorEntity);
     }
+
 }

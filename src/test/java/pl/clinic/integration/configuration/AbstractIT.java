@@ -7,12 +7,11 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import pl.clinic.DemoApplication;
-import pl.clinic.DemoApplicationTest;
 
 @ActiveProfiles("test")
 @Import(PersistenceContainerTestConfiguration.class)
 @SpringBootTest(
-    classes = DemoApplicationTest.class,
+    classes = DemoApplication.class,
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 public abstract class AbstractIT {

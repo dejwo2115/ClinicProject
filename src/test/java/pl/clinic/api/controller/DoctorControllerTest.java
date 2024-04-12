@@ -67,23 +67,22 @@ class DoctorControllerTest {
         assertEquals("doctorHome", viewName);
     }
 
-//    @Test
-//    void showAddAvailabilityForm() {
-//        // given
-//        String userName = "testDoctor";
-//        Doctor doctor = buildDoctor();
-//        when(authentication.getName()).thenReturn(userName);
-//        when(doctorService.findByIsLogged(authentication)).thenReturn(doctor);
-//
-//
-//
-//        // when
-//        String viewName = doctorController.showAddAvailabilityForm(extendedModelMap, authentication);
-//
-//        // then
-//        assertEquals("makeAvailability", viewName);
-//        verify(extendedModelMap).addAttribute(Mockito.eq("doctor"), Mockito.any());
-//    }
+    @Test
+    void showAddAvailabilityForm() {
+        // given
+        String userName = "testDoctor";
+        Doctor doctor = buildDoctor();
+        when(clinicUserDetailsService.findDoctorByUserName(authentication.getName())).thenReturn(doctor);
+
+
+
+        // when
+        String viewName = doctorController.showAddAvailabilityForm(extendedModelMap, authentication);
+
+        // then
+        assertEquals("makeAvailability", viewName);
+        verify(extendedModelMap).addAttribute(Mockito.eq("doctor"), Mockito.any());
+    }
 
     @Test
     void addAvailability() {

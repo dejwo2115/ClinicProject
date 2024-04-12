@@ -5,8 +5,8 @@ services:
     ports:
       - 8190:8190
     environment:
-      - SPRING_PROFILES_ACTIVE=default
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/dejwo_project
+      - SPRING_PROFILES_ACTIVE=local
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/clinicproject
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
     networks:
@@ -19,7 +19,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_DB=dejwo_project
+      - POSTGRES_DB=clinicproject
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:

@@ -4,7 +4,6 @@ package pl.clinic.api.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,28 +44,24 @@ public class DoctorController {
     private final AppointmentService appointmentService;
     private final AppointmentMapper appointmentMapper;
     private final ClinicUserDetailsService clinicUserDetailsService;
+
     @SuppressWarnings("unused")
     @GetMapping("/doctor")
     public String doctorHome() {
         return "doctorHome";
     }
+
     @SuppressWarnings("unused")
     @GetMapping("/doctor/makeAvailability")
     public String showAddAvailabilityForm(Model model, Authentication authentication) {
-        if(!authentication.isAuthenticated()) {
-            Doctor doctor = doctorService.findAll().get(0);
-            DoctorDTO doctorDTO = doctorMapper.map(doctor);
-            model.addAttribute("doctor", doctorDTO);
 
-        } else {
-            String userName = authentication.getName();
-            Doctor byIsLogged = doctorService.findByIsLogged(authentication);
-//            Doctor doctorByUserName = clinicUserDetailsService.findDoctorByUserName(userName);
-            DoctorDTO doctor = doctorMapper.map(byIsLogged);
-            model.addAttribute("doctor", doctor);
-        }
+        Doctor doctorByUserName = clinicUserDetailsService.findDoctorByUserName(authentication.getName());
+        DoctorDTO doctor = doctorMapper.map(doctorByUserName);
+        model.addAttribute("doctor", doctor);
+
         return "makeAvailability";
     }
+
     @SuppressWarnings("unused")
     @PostMapping("/doctor/addAvailability")
     public String addAvailability(@RequestParam("date") LocalDate date,
@@ -81,6 +76,7 @@ public class DoctorController {
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/successMessage";
     }
+
     @SuppressWarnings("unused")
     @GetMapping("/doctor/history/patientList")
     public String getPatientList(Model model) {
@@ -90,6 +86,7 @@ public class DoctorController {
 
         return "doctorPatientList";
     }
+
     @SuppressWarnings("unused")
     @GetMapping("/doctor/history/patientList/details/{patientEmail}")
     public String getPatientHistory(@PathVariable("patientEmail") String patientEmail, Model model) {
@@ -99,6 +96,7 @@ public class DoctorController {
         model.addAttribute("appointments", appointments);
         return "doctorPatientHistoryPage";
     }
+
     @SuppressWarnings("unused")
     @GetMapping("/doctor/history/appointment/{appointmentId}")
     public String getDetailsForAppointment(

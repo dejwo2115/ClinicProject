@@ -4,8 +4,6 @@ server:
     context-path: /clinic
 
 spring:
-  profiles:
-    active: local
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver

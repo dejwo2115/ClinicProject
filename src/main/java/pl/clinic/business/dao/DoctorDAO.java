@@ -1,5 +1,6 @@
 package pl.clinic.business.dao;
 
+import org.springframework.security.core.Authentication;
 import pl.clinic.domain.Doctor;
 import pl.clinic.domain.Specialization;
 
@@ -13,4 +14,5 @@ public interface DoctorDAO {
     List<Doctor> findBySpecializationName(String specialization);
     void save(Doctor doctor);
     void saveSpecToDoctor(Doctor doctor, Specialization specialization);
+
 }

@@ -56,8 +56,4 @@ public class DoctorService {
     public void save(Doctor doctor) {
         doctorDAO.save(doctor);
     }
-
-    public Doctor findByIsLogged(Authentication authentication) {
-        return doctorDAO.findByEmail(authentication.getName()).orElseThrow();
-    }
 }
