@@ -64,11 +64,12 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(AUTH_WHITELIST).permitAll()
-                            .requestMatchers("/login", "/error", "/images/bestDoctorErrorMessage.jpg", "/successMessage", "/swagger-ui/**", "/rest/**")
+                            .requestMatchers("/", "/login", "/error", "/images/bestDoctorErrorMessage.jpg"
+                                    ,"/images/background.jpg", "/images/**", "/css/**"
+                                    , "/successMessage", "/swagger-ui/**", "/rest/**")
                             .permitAll()
                             .requestMatchers("/doctor/**").hasAnyAuthority("DOCTOR")
                             .requestMatchers("/patient/**").hasAnyAuthority("PATIENT")
-                            .requestMatchers("/", "/images/**").hasAnyAuthority("DOCTOR", "PATIENT")
                             .requestMatchers("/rest/**").hasAnyAuthority("REST_API");
                 })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

@@ -1,42 +1,49 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-          crossorigin="anonymous">
-    <style>
-        body {
-            background: url([[@{/images/background.jpg}]])
-                no-repeat center center fixed;
-            background-size: cover;
-            color: black;
-            text-align: center;
-            padding-top: 100px;
-        }
-
-        h1 {
-            font-size: 48px;
-        }
-
-        .btn {
-            margin-top: 20px;
-            margin-right: 10px;
-        }
-    </style>
-    <title>Welcome to Clinic Project</title>
+<head th:replace="~{fragments/layouts/layout :: head_html}">
 </head>
 
 <body>
-<div class="container">
-    <h1>Welcome to Clinic Project</h1>
-    <div>
-        <a th:href="@{/patient}" class="btn btn-primary" role="button">Patient Portal</a>
-        <a th:href="@{/doctor}" class="btn btn-success" role="button">Doctor Portal</a>
+<div th:replace="~{fragments/layouts/layout :: navbar}"></div>
+<div class="containerIMG">
+    <p class="text-center fs-1">Welcome to Clinic Project</p>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Lewy div: Patient Portal -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="text-center">
+                    <!-- Przyciski na górze -->
+                    <a th:href="@{/patient}" class="btn btn-primary w-100 mb-3">Patient Portal</a>
+                </div>
+                <!-- Lista funkcjonalności Portalu Pacjenta -->
+                <ul class="list-group">
+                    <li class="list-group-item">View medical records</li>
+                    <li class="list-group-item">Schedule appointments</li>
+                    <li class="list-group-item">Prescription requests</li>
+                    <li class="list-group-item">Personal health dashboard</li>
+                </ul>
+            </div>
+
+            <!-- Prawy div: Doctor Portal -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="text-center">
+                    <!-- Przyciski na górze -->
+                    <a th:href="@{/doctor}" class="btn btn-success w-100 mb-3">Doctor Portal</a>
+                </div>
+                <!-- Lista funkcjonalności Portalu Lekarza -->
+                <ul class="list-group">
+                    <li class="list-group-item">View patient history</li>
+                    <li class="list-group-item">Manage appointments</li>
+                    <li class="list-group-item">Write prescriptions</li>
+                    <li class="list-group-item">Track patient progress</li>
+                </ul>
+            </div>
+        </div>
     </div>
+
 </div>
+
 </body>
 
 </html>

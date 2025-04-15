@@ -1,72 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-          crossorigin="anonymous">
-    <style>
-        body {
-            background: url([[@{/images/background.jpg}]])
-                no-repeat center center fixed;
-            background-size: cover;
-            color: black;
-            text-align: center;
-            padding-top: 100px;
-        }
-
-        h1 {
-            font-size: 48px;
-        }
-
-        .btn {
-            margin-top: 20px;
-            margin-right: 10px;
-        }
-
-        /* Nowy styl dla tabelki */
-        .table-container {
-            background-color: white; /* Białe tło */
-            padding: 20px; /* Dodaj wewnętrzne marginesy */
-            border-radius: 10px; /* Zaokrąglony narożnik */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień */
-            width: 100%; /* Szerokość 100% */
-            margin-top: 20px; /* Dodaj odstęp na górze */
-        }
-
-        table {
-            width: 100%; /* Ustaw szerokość tabeli na 100% */
-            border-collapse: collapse; /* Złącz krawędzie komórek */
-        }
-
-        th, td {
-            padding: 8px; /* Dodaj wewnętrzny margines dla komórek */
-            text-align: left; /* Wyrównaj tekst do lewej strony */
-            border-bottom: 1px solid #ddd; /* Dodaj dolny obramowanie */
-        }
-
-        th {
-            background-color: #f2f2f2; /* Kolor tła dla nagłówków kolumn */
-        }
-
-        th:first-child, td:first-child {
-            border-left: none; /* Usuń lewe obramowanie dla pierwszej kolumny */
-        }
-
-        th:last-child, td:last-child {
-            border-right: none; /* Usuń prawe obramowanie dla ostatniej kolumny */
-        }
-    </style>
-</head>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Details and Appointments</title>
+<head th:replace="~{fragments/layouts/layout :: head_html}">
 </head>
 <body>
 <div class="container">
-    <div id="patient-info" class="table-container">
+    <div id="patient-info" class="table-container" th:fragment="upcomingVisitsContent">
         <h2>Patient Details</h2>
         <table>
             <tbody>

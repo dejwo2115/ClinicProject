@@ -58,7 +58,6 @@ public class PatientController {
             model.addAttribute("patient", patientDTO2);
         }
 
-
         return "patientHome";
     }
     @SuppressWarnings("unused")
@@ -136,7 +135,8 @@ public class PatientController {
 
         model.addAttribute("appointments", appointments);
         model.addAttribute("patient", patientDTO);
-        return "patientHistoryPage";
+        model.addAttribute("content", "patientHistoryPage");
+        return "patientHome";
     }
     @SuppressWarnings("unused")
     @GetMapping("/patient/history/appointment/{appointmentId}")
@@ -164,7 +164,8 @@ public class PatientController {
 
         model.addAttribute("patient", patientDTO);
         model.addAttribute("appointmentDoctorMap", appointmentDoctorMap);
-        return "patientUpcomingVisitsPage";
+        model.addAttribute("content", "patientUpcomingVisitsPage");
+        return "patientHome";
     }
     @SuppressWarnings("unused")
     @DeleteMapping("patient/upcomingVisits/cancel")

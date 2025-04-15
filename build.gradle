@@ -39,7 +39,7 @@ dependencies {
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
 
-// api
+	// api
 	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springDocOpenApiVersion}"
 
 	// Po wygenerowaniu klienta, trzeba będzie dodać poniższe zależności, żeby kod się kompilował
