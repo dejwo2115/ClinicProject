@@ -1,0 +1,12 @@
+.containerIMG
+{
+    background-image: url("../images/background.jpg"); /* Ścieżka do obrazu */
+    background-size: cover;         /* Tło wypełnia cały ekran, zachowując proporcje */
+        background-position: center;    /* Wyśrodkowanie obrazu */
+        background-attachment: fixed;   /* Tło pozostaje przyklejone do ekranu */
+        margin: 0;
+        height: 100vh;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Opcjonalnie ustaw czcionkę */
+    height: 100vh;
+}
